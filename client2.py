@@ -3,7 +3,7 @@ import sys
 serverAddress = '10.66.110.137'
 clientAddress = '10.66.110.137'
 serverPort = 2500
-clientPort = 2600
+clientPort = 2700
 s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 s.bind((clientAddress,clientPort))
 

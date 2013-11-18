@@ -4,7 +4,7 @@
 #2013-11-12
 
 import socket
-host = '192.168.0.17'
+host = '10.66.110.137'
 port = 2500
 messageNumber = 0
 messageList = []
@@ -36,11 +36,11 @@ while 1:
     if(response != None):
       response = '/'.join(response)
       print("Sent " + response + "\n")
-      s.sendto(response.encode('utf-8'), (address[0],port))
+      s.sendto(response.encode('utf-8'), (address[0],address[1]))
     else:
       response = '1/SEND/SERVER/' + message[2] + '/'
       print("Sent " + response + "\n")
-      s.sendto(response.encode('utf-8'), (address[0],port))
+      s.sendto(response.encode('utf-8'), (address[0],address[1]))
   if(message[1] == 'ACK'):
     acknowledgementList.append((message[0],message[1],message[2],message[3],message[4]))
     removeMessage(message[0],messageList)
@@ -48,20 +48,20 @@ while 1:
     if(response != None):
       response = '/'.join(response)
       print("Sent " + response + "\n")
-      s.sendto(response.encode('utf-8'), (address[0],port))
+      s.sendto(response.encode('utf-8'), (address[0],address[1]))
     else:
       response = '1/SEND/SERVER/' + message[2] +'/'
       print("Sent " + response + "\n")
-      s.sendto(response.encode('utf-8'), (address[0],port))
+      s.sendto(response.encode('utf-8'), (address[0],address[1]))
   if(message[1] == 'READ'):
     response = getMessage(message[2], acknowledgementList)
     if(response != None):
       removeMessage(response[0],acknowledgementList)
       response = '/'.join(response)
       print("Sent " + response + "\n")
-      s.sendto(response.encode('utf-8'), (address[0],port))
+      s.sendto(response.encode('utf-8'), (address[0],address[1]))
     else:
       response = '1/SEND/SERVER/' + message[2] + '/'
       print("Sent " + response + "\n")
-      s.sendto(response.encode('utf-8'), (address[0],port))
+      s.sendto(response.encode('utf-8'), (address[0],address[1]))
   
